@@ -52,6 +52,51 @@ let resul = (m1 + m2 + m3)/3;
 
 console.log("La media aritmética de estos números es " + resul);
 
+//Alerta//
 
+/*
+alert("Esto es una alerta");
+let mensajeAlerta = "Esto es una alerta con variable";
+alert(mensajeAlerta);
 
+let mensajeAlerta = prompt("Escribe un mensaje de alerta");
+alert(mensajeAlerta);
+*/
+let mensajeConfirmacion = confirm("¿Quieres continuar?");
+console.log(mensajeConfirmacion);
+/*
+//Document.Write//
+
+document.writeln("Hola esto es un document.write");
+document.writeln("<h1>Hola esto es un document.write con h1</h1>");
+*/
+
+//Onclick y ommouser//
+
+function button(){
+    alert("Hola")
+}
+
+function imagen(){
+    alert("Adios")
+}
+
+let nombreUsu = prompt("¿Cómo te llamas?");
+alert("Bienvenido a mi página " + nombreUsu);
+
+function comprar(){
+    let producto = prompt("¿Qué producto quieres comprar?");
+    let precio = prompt("¿Cuánto cuesta el producto?");
+    let unidades = prompt("¿Cuántas unidades quieres?");
+    let total = precio * unidades;
+    alert("El total a pagar por " + unidades + " unidades de " + producto + " es de " + total + " euros.");         
+    let confirmar = confirm("¿Quieres confirmar la compra?");
+    if(confirmar){
+        alert("Gracias por su compra " + nombreUsu);
+    } else {
+        alert("Compra cancelada");
+    }
+    document.writeln( "<h2>Resumen de la compra</h2>");
+    document.writeln("El " + producto + " tiene un precio de " + precio + " y al llevarse " + unidades + " unidades, el total es de " + total + " euros.");
+}   
 
