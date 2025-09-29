@@ -6,6 +6,8 @@ function ejercicio4(){
     }
 
     let colores = ["pink", "black" , "yellow", "green", "blue", "red", "white", "brown"];
-    let color;
     
+    colores[Math.floor(Math.random() * colores.length)];
+
+    document.writeln("<table border='1'><tr>");
 }
