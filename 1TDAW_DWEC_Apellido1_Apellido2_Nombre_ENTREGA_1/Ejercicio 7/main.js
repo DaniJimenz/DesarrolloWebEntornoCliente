@@ -4,12 +4,12 @@ function ejercicio7() {
         let num = parseFloat(prompt("Introduce el número " + (i + 1) + " de 10"));
         numeros.push(num);
     }
-    document.write("Array original <br>");
-    document.write= "Indices ";
+    document.writeln("Array original ");
+    document.writeln = "Indices ";
     for(let i = 0; i < numeros.length; i++){
-        document.write("[" + i + "] ");
+        document.writeln("[" + i + "] ");
     }
-    document.write("<br>Valores " + numeros + "<br><br>");
+    document.writeln("Valores " + numeros );
 
     let inicial = parseInt(prompt("Introduce la posición inicial 0-9"));
     let final = parseInt(prompt("Introduce la posición final 0-9"));
@@ -24,11 +24,11 @@ function ejercicio7() {
         numeros[i] = numeros[i + 1];
     }
     numeros[final] = elementoAMover;
-    document.write("Resultado<br>");
-    document.write = "Indices ";
+    document.writeln("Resultado ");
+    document.writeln = "Indices ";
     for(let i = 0; i < numeros.length; i++){
-        document.write = "[" + i + "] ";
+        document.writeln = "[" + i + "] ";
     }
-    document.write("<br>Valores " + numeros);
+    document.writeln("Valores " + numeros);
 }
 

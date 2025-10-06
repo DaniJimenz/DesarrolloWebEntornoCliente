@@ -12,9 +12,9 @@ function ejercicio4(){
         bandera.push(colorAleatorio);
     }
 
-    document.write("<table border='1'><tr>");
+    document.writeln("<table border='1'><tr>");
     for(let i = 0; i < bandera.length; i++){
-        document.write("<td style='width:100px; height:100px; background-color:" + bandera[i] + "'></td>");
+        document.writeln("<td style='width:100px; height:100px; background-color:" + bandera[i] + "'></td>");
     }
-    document.write("</tr></table>");
+    document.writeln("</tr></table>");
 }
