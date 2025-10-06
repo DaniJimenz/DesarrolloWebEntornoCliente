@@ -9,7 +9,6 @@ function ejercicio1() {
             sumaCuadrados += listaDivisores[i] * listaDivisores[i];
         }
         alert("La suma de los cuadrados de los divisores es " + sumaCuadrados);
-
         let cuadrado = Math.sqrt(sumaCuadrados);
         if(cuadrado === Math.floor(cuadrado)){
         alert("La suma es un cuadrado")

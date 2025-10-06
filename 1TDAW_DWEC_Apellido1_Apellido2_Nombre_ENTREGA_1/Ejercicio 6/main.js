@@ -13,14 +13,14 @@ function ejercicio6() {
             }
         }
         if(contador === 1){
-            let yaEsta = false;
+            let listo = false;
             for(let k = 0; k < resultado.length; k++){
                 if(resultado[k] === elemento){
-                    yaEsta = true;
+                    listo = true;
                     break;
                 }
             }
-            if(!yaEsta){
+            if(!listo){
                 resultado.push(elemento);
             }
         }
