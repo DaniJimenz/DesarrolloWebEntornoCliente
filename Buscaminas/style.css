@@ -1,9 +1,0 @@
-body{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: lightblue;
-    margin-top: 5%;
-}
-

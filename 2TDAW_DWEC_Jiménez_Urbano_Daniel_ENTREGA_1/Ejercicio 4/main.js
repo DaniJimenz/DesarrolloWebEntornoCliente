@@ -6,9 +6,12 @@ function ejercicio4(){
         num = parseInt(prompt("¿Cuál es el número de franjas de la bandera? (entre 1 y 5)"));
     }
     let colores = ["red", "yellow", "green", "white", "blue", "brown", "pink", "black"];
+    let maxRepeticiones = [1, 3, 2, 1, 2, 2, 3, 1];
+    let contadores = [0,0,0,0,0,0,0,0];
     let bandera = [];
     for(let i = 0; i < num; i++){
-        let colorAleatorio = colores[Math.floor(Math.random() * colores.length)];
+        let posicion = Math.floor(Math.random() * colores.length);
+        let colorAleatorio = colores[posicion];
         bandera.push(colorAleatorio);
     }
 
