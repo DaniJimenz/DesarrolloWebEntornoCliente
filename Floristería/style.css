@@ -14,12 +14,16 @@ img{
     max-width: 100%;
 }
 
+body{
+    background-color: bisque;
+}
+
 a{
     text-decoration: none;
     color: #2c4e30;
 }
 header{
-    background-color: white;
+    background-color: #FFFFFF;
     padding: 0px 40px;
 }
 
@@ -41,6 +45,8 @@ nav{
     color: #2c4e30;
 }
 
+/*Banner*/
+
 #banner{
     background-image: url(./img/blancas.jpg);
     display: flex;
@@ -49,7 +55,7 @@ nav{
     flex-direction: column;
     align-items: center;
     text-align: center;
-    height: 80vh;
+    height: 70vh;
 }
 
 #banner h1{
@@ -64,4 +70,92 @@ nav{
     font-family: 'Playfair Display';
     color:#FFFFFF
 }
+
+#banner div{
+    background-color: rgba(0, 0, 0, 0.384);
+    width: 100%;
+}
+
+/*Catálogo*/
+
+#catalogo{
+    height: 70vh;
+}
+
+h2{
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+    margin-top: 30px;
+    color: #2c4e30;
+    font-family: 'Playfair Display';
+    margin-bottom: 30px;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);  
+    grid-template-rows: 1fr;
+    grid-column-gap: 40px;
+    max-width: 95%; 
+    margin: 0 auto;
+}
+
+#catalogo .grid img{
+    border-radius: 1rem;
+}
+
+#catalogo .grid > div {
+    border-radius: 1rem; 
+    text-align: center;
+    padding-bottom: 1.5rem; 
+    background-color: #FFFFFF;
+    height: 30vh;
+}
+
+#catalogo .grid > div:nth-child(1){
+    background-image: url(./img/ramo.jpg);
+    background-size: cover;
+}
+
+#catalogo .grid > div:nth-child(2){
+    background-image: url(./img/centrodemesa.jpg);
+    background-size: cover;
+}
+
+#catalogo .grid > div:nth-child(3){
+    background-image: url(./img/plantas.jpg);
+    background-size: cover;
+}
+
+#catalogo .grid h3{
+    color: #2c4e30;
+    font-family: 'Montserrat';
+}
+
+#catalogo .grid p{
+    color: #2c4e30;
+    font-family: 'Montserrat';
+}
+
+/*Nosotras*/
+
+#nosotras{
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+#nosotras div >div{
+    
+}
+
+
+
+
+
+
+
 
