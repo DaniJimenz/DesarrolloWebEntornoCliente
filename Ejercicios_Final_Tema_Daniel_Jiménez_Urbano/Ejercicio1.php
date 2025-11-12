@@ -1,8 +1,6 @@
 <?php
 
 //Ejercicio 1. Calculadora
-//Crear una calculadora simple que realice operaciones básicas (suma, resta,
-//multiplicación, división) utilizando funciones.
 
 function calcular($num1, $num2, $operacion){
     try{
@@ -14,9 +12,9 @@ function calcular($num1, $num2, $operacion){
         'suma' => $num1 + $num2,
         'resta' => $num1 - $num2,
         'multiplicacion' => $num1 * $num2,
-        'division' => $num2 != 0 ? $num1 / $num2 : 'Error: Division por cero',
+        'division' => $num2 != 0 ? $num1 / $num2 : 'Division por cero',
         'potencia' => pow($num1, $num2),
-        'raizCuadrada' => $num1 >= 0 ? sqrt($num1) : 'Error: Raiz cuadrada de numero negativo',
+        'raizCuadrada' => $num1 >= 0 ? sqrt($num1) : 'Raiz cuadrada de numero negativo',
         'modulo' => $num1 % $num2,
         default => throw new Exception('Operacion no valida'),
         };
@@ -29,7 +27,25 @@ function calcular($num1, $num2, $operacion){
 
 echo calcular(10, 5, 'suma') ;
 echo "\n";
+echo calcular(10, 5, 'resta');
+echo "\n";
+echo calcular(10, 5, 'multiplicacion');
+echo "\n";
+echo calcular(10, 5, 'division');
+echo "\n";
+echo calcular(10, 5, 'potencia');
+echo "\n";
+echo calcular(16, 0, 'raizcuadrada');
+echo "\n";
+echo calcular(10, 3, 'modulo');
+echo "\n";
 
+//Errores
+
+echo calcular(10, 0, 'division'); //0
+echo "\n";
+echo calcular(-16, 0, 'raizcuadrada'); //Negativa
+echo "\n";
 
 
 ?>

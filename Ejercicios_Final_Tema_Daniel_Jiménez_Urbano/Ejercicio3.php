@@ -1,8 +1,6 @@
 <?php
 
 //Ejercicio 3. Manipulación de Arrays
-//Crear funciones para procesar una lista de productos con operaciones como filtrado,
-//ordenación y transformación
 
 $productos = [
 ["id" => 1, "nombre" => "Laptop", "precio" => 899.99, "stock" => 10],

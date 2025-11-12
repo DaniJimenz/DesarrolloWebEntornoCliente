@@ -1,10 +1,7 @@
 <?php
 
-//Ejercicio 4. Crear un procesador de texto que analice un párrafo y extraiga estadísticas como conteo
-//de palabras, frecuencia de palabras y longitud promedio.
-//Ampliar el procesador para identificar n-gramas (secuencias de n palabras) y detectar
-//frases comunes en el texto.
-function analizarTexto($texto)
+//Ejercicio 4
+function analizarTexto($texto, $n = 2)
 {
     // Limpiar y dividir el texto en palabras
     $texto = strtolower($texto);
@@ -17,7 +14,8 @@ function analizarTexto($texto)
         return [
             'total_palabras' => 0,
             'frecuencia' => [],
-            'longitud_promedio' => 0
+            'longitud_promedio' => 0,
+            'ngramas' => []
         ];
     }
     // Frecuencia de palabras
@@ -30,15 +28,38 @@ function analizarTexto($texto)
         $longitudTotal / $totalPalabras : 0;
 
     $ngramas = [];
-    if ($totalPalabras >= $n){
+    if ($totalPalabras >= $n) {
         for ($i = 0; $i <= $totalPalabras - $n; $i++) {
             $slice = array_slice($palabras, $i, $n);
             $ngrama = implode(' ', $slice);
-            $n
+
+            if (isset($ngramas[$ngrama])) {
+                $ngramas[$ngrama]++;
+            } else {
+                $ngramas[$ngrama] = 1;
+            }
         }
+        arsort($ngramas);
+    }
     return [
         'total_palabras' => $totalPalabras,
         'frecuencia' => $frecuencia,
-        'longitud_promedio' => $longitudPromedio
+        'longitud_promedio' => $longitudPromedio,
+        'ngramas' => $ngramas
     ];
 }
+    echo "Ingrese un párrafo de texto:\n";
+    $textoUsuario = readline();
+    $resultado = analizarTexto($textoUsuario);
+    echo "Total de palabras: " . $resultado['total_palabras'] . "\n";
+    echo "Frecuencia de palabras:\n";
+    foreach ($resultado['frecuencia'] as $palabra => $count) {
+        echo "$palabra: $count\n";
+    }
+    echo "Longitud promedio de palabras: " . round ($resultado['longitud_promedio'], 2). "\n";
+    echo "n-gramas más frecuentes:\n";
+    foreach ($resultado['ngramas'] as $ngrama => $count) {
+        echo "$ngrama: $count\n";
+}
+
+?>

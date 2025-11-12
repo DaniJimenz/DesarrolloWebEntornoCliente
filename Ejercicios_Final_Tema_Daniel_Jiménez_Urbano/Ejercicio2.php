@@ -1,10 +1,6 @@
 <?php
 
 //Ejercicio 2. Validador de Formularios
-//Crear un validador de formularios que compruebe campos como email, nombre,
-//teléfono y contraseña.
-//Crear una clase Validador que encapsule todas las funciones y devuelva mensajes de
-//error específicos para cada campo.
 
 class Validador {
     public function validarEmail($email) {
@@ -48,4 +44,5 @@ echo $validador->validarTelefono($telefono) ;
 $clave = readline("Ingresa una clave: ");
 echo $validador->validarClave($clave);
 
+//En clase si me sale en la terminal lo que pido que se ingrese pero en casa no
 ?>
