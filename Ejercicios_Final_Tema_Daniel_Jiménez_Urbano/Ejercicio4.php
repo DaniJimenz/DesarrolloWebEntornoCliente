@@ -12,6 +12,14 @@ function analizarTexto($texto)
     $palabras = preg_split('/\s+/', $texto, -1, PREG_SPLIT_NO_EMPTY);
     // Contar palabras
     $totalPalabras = count($palabras);
+
+    if ($totalPalabras === 0) {
+        return [
+            'total_palabras' => 0,
+            'frecuencia' => [],
+            'longitud_promedio' => 0
+        ];
+    }
     // Frecuencia de palabras
     $frecuencia = array_count_values($palabras);
     arsort($frecuencia);
@@ -21,6 +29,13 @@ function analizarTexto($texto)
     $longitudPromedio = $totalPalabras > 0 ?
         $longitudTotal / $totalPalabras : 0;
 
+    $ngramas = [];
+    if ($totalPalabras >= $n){
+        for ($i = 0; $i <= $totalPalabras - $n; $i++) {
+            $slice = array_slice($palabras, $i, $n);
+            $ngrama = implode(' ', $slice);
+            $n
+        }
     return [
         'total_palabras' => $totalPalabras,
         'frecuencia' => $frecuencia,

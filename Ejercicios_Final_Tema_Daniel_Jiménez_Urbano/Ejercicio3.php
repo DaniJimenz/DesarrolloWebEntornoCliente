@@ -2,9 +2,7 @@
 
 //Ejercicio 3. Manipulación de Arrays
 //Crear funciones para procesar una lista de productos con operaciones como filtrado,
-//ordenación y transformación.
-
-function filtrado
+//ordenación y transformación
 
 $productos = [
 ["id" => 1, "nombre" => "Laptop", "precio" => 899.99, "stock" => 10],
@@ -20,7 +18,31 @@ $valorTotal = array_reduce($productos, fn($total, $p) =>
     $total + ($p["precio"] * $p["stock"]), 0
 );
 
+function buscarPorNombre($productos, $nombre) {
+    return array_filter($productos, fn($p) =>
+        stripos($p["nombre"], $nombre) !== false
+    );
+}
+
 // Resultados
+
 echo "Productos caros (precio > 400):";
+print_r($caros);
+echo "Productos ordenados por precio:";
+print_r($productos);
+echo "Valor total del inventario: $valorTotal\n";
+
+//Reto adicional
+
+$coincidenciaParcial1 = "lap";
+$resultadoCoincidencia1 = buscarPorNombre($productos, $coincidenciaParcial1);
+echo "Productos que coinciden con '$coincidenciaParcial1':";
+print_r($resultadoCoincidencia1);
+
+$coincidenciaParcial2 = "fono";
+$resultadoCoincidencia2 = buscarPorNombre($productos, $coincidenciaParcial2);
+echo "Productos que coinciden con '$coincidenciaParcial2':";
+print_r($resultadoCoincidencia2);
+
 
 ?>
