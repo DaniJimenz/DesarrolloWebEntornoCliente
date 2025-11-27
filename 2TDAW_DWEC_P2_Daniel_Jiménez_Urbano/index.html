@@ -7,9 +7,27 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+    <div class="modo">
+        <h1 class="titulo">BOBOBO <span class="destaque">BUSCAMINAS</span></h1>
+        <p class="subtitulo">Elige la dificultad del juego</p>
+    <div>
+        <div class="dificultad">
+            <button onclick="iniciarJuego('facil')" class="boton-tenno">
+                Tennosuke(FÁCIL)
+                <img src="./Img/tenno.png" alt="" class="boton-icono">
+            </button>
+            <button onclick="iniciarJuego('medio')" class="boton-patch">
+                Don Patch(MEDIO)
+                <img src="./Img/Don_Patch_Render.webp" alt="" class="boton-icono">
+            </button>
+            <button onclick="iniciarJuego('dificil')" class="boton-bobo">
+                Bobobo(DIFICIL)
+                <img src="./Img/Bo-bobo_Official_Image_4.webp" alt="" class="boton-icono">
+            </button>
+        </div>
+    </div>
+    <h2 id="mensaje-estado"></h2>
+    <div id="tablero" class="tablero-juego"></div>
     <script src="main.js"></script>
-    <h1>Buscaminas, Daniel Jiménez</h1>
-    <div><img src="./Img/minita.png" alt=""></div>
-    <button onclick="iniciarJuego()">Iniciar Juego</button>
 </body>
 </html>
