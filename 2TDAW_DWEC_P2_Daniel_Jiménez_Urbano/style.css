@@ -94,8 +94,6 @@ button:hover {
     z-index: 2; 
 }
 
-/**/
-
 .tablero-juego {
     display: grid;
     gap: 2px;
