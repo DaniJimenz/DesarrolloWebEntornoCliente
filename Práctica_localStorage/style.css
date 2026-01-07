@@ -1,0 +1,22 @@
+*{
+    margin: auto;
+    padding: auto;
+    box-sizing: border-box;
+}
+
+button{
+    border-color: green;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+textarea{
+    border-color: green;
+    border-radius: 10px;
+}
+
+#form{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
