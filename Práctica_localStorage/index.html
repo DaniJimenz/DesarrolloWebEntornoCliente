@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <section id="form">
-    <textarea name="mensaje" maxlength="40"></textarea>
-        <div>
-            <button type="submit">Añadir</button>
-            <button type="submit">Mostrar Lista</button>
-            <button type="submit">Borrar Lista</button>
-        </div>
+    <section id="formulario">
+        <h1>TABLERO KANBAN</h1>
+        <label>Introduce el número de Columnas (Max 4)</label>
+        <input type="number" id="columnas" min="1" max="4">
+        <button>Generar Tablero</button>
+        <div></div>
+
     </section>
+<script src="./main.js"></script>
 </body>
 </html>
