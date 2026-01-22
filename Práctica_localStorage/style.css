@@ -1,6 +1,124 @@
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5;
+    padding: 20px;
+}
+
+#formulario {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+    text-align: center;
+}
+
+#formulario h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#formulario label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input[type="number"], 
+input[type="text"] {
+    padding: 10px;
+    width: 90%;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#limpiar {
+    background-color: #dc3545;
+    margin-top: 10px;
+}
+
+#limpiar:hover {
+    background-color: #a71d2a;
+}
+
+#tabla {
+    display: flex; 
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px;
+    overflow-x: auto;
+}
+
+.columna-kanban {
+    background-color: #ebedf0;
+    width: 280px;
+    min-height: 450px;
+    border-radius: 6px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.columna-kanban h2 {
+    font-size: 1.1rem;
+    color: #444;
+    margin-bottom: 15px;
+    text-align: center;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.tarea {
+    background-color: #ffffff;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+    cursor: grab; 
+    transition: transform 0.2s, background-color 0.2s;
+    word-wrap: break-word; 
+}
+
+.tarea:hover {
+    background-color: #f9f9f9;
+}
+
+.tarea:active {
+    cursor: grabbing;
+    transform: scale(0.98);
+}
+
+.oculto {
+    display: none;
+}
+
+.error-limite {
+    color: #d9534f;
+    font-size: 0.8rem;
+    margin-top: 5px;
 }
 

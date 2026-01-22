@@ -9,12 +9,21 @@
 <body>
     <section id="formulario">
         <h1>TABLERO KANBAN</h1>
-        <label>Introduce el número de Columnas (Max 4)</label>
+        
+        <label id="label">Introduce el número de Columnas (Max 4)</label>
         <input type="number" id="columnas" min="1" max="4">
-        <button>Generar Tablero</button>
-        <div></div>
+        <button id="botonA">Configurar Columnas</button>
+        
+        <div id="columna"></div>
 
+        <button id="botonB" class="oculto">Generar Tablero</button>
+        <button id="limpiar">Reiniciar Tablero</button>
     </section>
+
+    <main id="tabla" class="contenedor-tablero">
+        </main>
+
+    <script src="./main.js"></script>
 <script src="./main.js"></script>
 </body>
 </html>
