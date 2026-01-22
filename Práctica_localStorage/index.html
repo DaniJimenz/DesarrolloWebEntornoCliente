@@ -16,12 +16,29 @@
         
         <div id="columna"></div>
 
-        <button id="botonB" class="oculto">Generar Tablero</button>
-        <button id="limpiar">Reiniciar Tablero</button>
+        <div id="columnaCampos" class="oculto">
+            <label for="nombre">Nombre de la Columna</label>
+            <input type="text" id="nombre">
+
+            <label for="labelLimite" for="limite">Límite de Tareas</label>
+            <input type="number" id="limite" min="1">
+
+            <button id="botonC">Guardar Columna</button>
+        </div>
+
+        <div class="accionesFormulario">
+            <button id="botonB" class="oculto">Generar Tablero</button>
+            <button id="limpiar">Reiniciar Tablero</button>
+        </div>
+    </section>
+        
+    <section id="tabla" class="oculto"></section>
+
+    <section id="nuevaTarea" class="oculto">
+        <h3>Añadir Tarea</h3>
+        <input type="text" id="tarea" placeholder="descripcion">
     </section>
 
-    <main id="tabla" class="contenedor-tablero">
-        </main>
 
     <script src="./main.js"></script>
 <script src="./main.js"></script>

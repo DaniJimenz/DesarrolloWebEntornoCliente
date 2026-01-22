@@ -1,19 +1,17 @@
 const botonA = document.getElementById('botonA');
 const botonB = document.getElementById('botonB');
+const botonC = document.getElementById('botonC');
+const columnas = document.getElementById('columna');
 const columna = document.getElementById('columna');
 const nombre = document.getElementById('nombre');
 const limpiar = document.getElementById('limpiar');
 const label = document.getElementById('label');
-const labelLimite = document.getElementById('labelLimite');
-const formulario = document.getElementById('formulario');
 const limite = document.getElementById('limite');
-const botonC = document.getElementById('botonC');
+const formulario = document.getElementById('formulario');
 const tabla = document.getElementById('tabla'); 
-const tarea = document.getElementById('tarea');
 const nuevaTarea = document.getElementById('nuevaTarea'); 
-let maxC = 0;
-let contadorC = 1;
-let contadorT = 1;
+let maxColum = 0;
+let columnasConfig = [];
 
 /* Ocultar sección nueva tarea principio*/
 
@@ -21,23 +19,22 @@ if (formulario.style.display !== 'none'){
     nuevaTarea.style.display = 'none';
 }
 
-/*Cargar contador de columnas desde localStorage si existe*/
+/*Persistencia de datos al cargar*/
 
-if(localStorage.getItem('numecolum')){
-    contadorC = JSON.parse(localStorage.getItem('numcolum'));
-} else {
-    localStorage.setItem('numecolum', JSON.stringify(contadorC));
+window.onload = function(){
+    const guardado = this.localStorage.getItem('guardadoKanban');
+    
+    if(guardado){
+        columnasConfig = JSON.parse(guardado);
+        formulario.classList.add('oculto');
+        tabla.classList.remove('oculto');
+        nuevaTarea.classList.remove('coulto');
+        crearTablero();
+    }
 }
 
-/*Cargar contador tareas desde localstorage si existe*/ 
 
-if (localStorage.getItem('numeTareas')){
-    contadorT = JSON.parse(localStorage.getItem('numeTareas'));
-} else {
-    localStorage.setItem('numeTareas', JSON.stringify(contadorT))
-}
 
-/*Cragar máximo de columnas desde localstorage si existe*/
 
 
 
