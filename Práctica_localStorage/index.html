@@ -14,13 +14,11 @@
         <input type="number" id="columnas" min="1" max="4">
         <button id="botonA">Configurar Columnas</button>
         
-        <div id="columna"></div>
-
-        <div id="columnaCampos" class="oculto">
+        <div id="columna"></div> <div id="columnaCampos" class="oculto">
             <label for="nombre">Nombre de la Columna</label>
             <input type="text" id="nombre">
 
-            <label for="labelLimite" for="limite">Límite de Tareas</label>
+            <label for="limite">Límite de Tareas</label>
             <input type="number" id="limite" min="1">
 
             <button id="botonC">Guardar Columna</button>
@@ -37,10 +35,9 @@
     <section id="nuevaTarea" class="oculto">
         <h3>Añadir Tarea</h3>
         <input type="text" id="tarea" placeholder="descripcion">
+        <p><small>Escribe aquí y luego pulsa "Añadir Tarea" en la columna correspondiente.</small></p>
     </section>
 
-
     <script src="./main.js"></script>
-<script src="./main.js"></script>
 </body>
 </html>
