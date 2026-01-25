@@ -23,7 +23,6 @@ if (formulario.style.display !== 'none'){
 
 window.onload = function(){
     const guardado = this.localStorage.getItem('guardadoKanban');
-    
     if(guardado){
         columnasConfig = JSON.parse(guardado);
         formulario.classList.add('oculto');
@@ -31,6 +30,48 @@ window.onload = function(){
         nuevaTarea.classList.remove('coulto');
         crearTablero();
     }
+}
+
+botonA.onclick = function() {
+    const num = parseInt(columnasInput.value); 
+    if (isNaN(num) || num < 1 || num > 4) {
+        alert("Introduce un número entre 1 y 4"); 
+        return;
+    }
+    maxColum = num;
+    divColumnaCampos.classList.remove('oculto'); 
+    botonA.disabled = true;
+};
+
+botonB.onclick = function() {
+    localStorage.setItem('kanban_storage', JSON.stringify(columnasConfiguradas)); 
+    location.reload(); 
+};
+
+botonC.onclick = function() {
+    const nombreVal = nombre.value.trim();
+    const limiteVal = parseInt(limite.value);
+
+    if (nombreVal === "" || isNaN(limiteVal) || limiteVal < 1) {
+        alert("Introduce un nombre y un límite válido");
+        return;
+    }
+
+    columnasConfiguradas.push({
+        titulo: nombreVal,
+        max: limiteVal,
+        tareas: []
+    });
+
+    /*Limpio para la siguiente Columna*/
+    nombre.value = "";
+    limite.value = "";
+}
+
+/*Crear Tablero*/
+
+function crearTablero() {
+    
 }
 
 
