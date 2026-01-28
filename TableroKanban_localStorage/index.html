@@ -14,7 +14,7 @@
         <input type="number" id="columnas" min="1" max="4">
         <button id="botonA">Configurar Columnas</button>
         
-        <div id="columna"></div> <div id="columnaCampos" class="oculto">
+        <div id="columnaCampos" class="oculto">
             <label for="nombre">Nombre de la Columna</label>
             <input type="text" id="nombre">
 
@@ -26,7 +26,6 @@
 
         <div class="accionesFormulario">
             <button id="botonB" class="oculto">Generar Tablero</button>
-            <button id="limpiar">Reiniciar Tablero</button>
         </div>
     </section>
         
@@ -37,6 +36,10 @@
         <input type="text" id="tarea" placeholder="descripcion">
         <p><small>Escribe aquí y luego pulsa "Añadir Tarea" en la columna correspondiente.</small></p>
     </section>
+
+    <div class="botonReiniciar">
+        <button id="limpiar">Reiniciar Tablero</button>
+    </div>
 
     <script src="./main.js"></script>
 </body>

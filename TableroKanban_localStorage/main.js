@@ -1,16 +1,15 @@
 const botonA = document.getElementById('botonA');
 const botonB = document.getElementById('botonB');
 const botonC = document.getElementById('botonC');
-const columnas = document.getElementById('columna');
-const columna = document.getElementById('columna');
+const columnasInput = document.getElementById('columnas');
 const nombre = document.getElementById('nombre');
 const limpiar = document.getElementById('limpiar');
-const label = document.getElementById('label');
 const limite = document.getElementById('limite');
 const formulario = document.getElementById('formulario');
 const tabla = document.getElementById('tabla'); 
 const nuevaTarea = document.getElementById('nuevaTarea'); 
-const inputTareaTxt = document.getElementById('inputTareaTxt');
+const inputTareaTxt = document.getElementById('tarea');
+const divColumnaCampos = document.getElementById('columnaCampos');
 let maxColum = 0;
 let columnasConfig = [];
 
@@ -28,10 +27,12 @@ window.onload = function(){
         columnasConfig = JSON.parse(guardado);
         formulario.classList.add('oculto');
         tabla.classList.remove('oculto');
-        nuevaTarea.classList.remove('coulto');
+        nuevaTarea.classList.remove('oculto');
         crearTablero();
     }
 }
+
+/*Configuro número de Columnas*/
 
 botonA.onclick = function() {
     const num = parseInt(columnasInput.value); 
@@ -42,14 +43,20 @@ botonA.onclick = function() {
     maxColum = num;
     divColumnaCampos.classList.remove('oculto'); 
     botonA.disabled = true;
+    columnasInput.disabled = true;
 };
 
-/*Guardar en localStorage*/
+/*Guardar en localStorage/ Se genera tablero*/
 
 botonB.onclick = function() {
-    localStorage.setItem('kanban_storage', JSON.stringify(columnasConfiguradas)); 
-    location.reload(); 
+    localStorage.setItem('guardadoKanban', JSON.stringify(columnasConfig)); 
+    formulario.classList.add('oculto');
+    tabla.classList.remove('oculto'); 
+    nuevaTarea.style.display = 'block'; 
+    crearTablero();
 };
+
+/*Guardo Columna individual*/
 
 botonC.onclick = function() {
     const nombreVal = nombre.value.trim();
@@ -60,7 +67,7 @@ botonC.onclick = function() {
         return;
     }
 
-    columnasConfiguradas.push({
+    columnasConfig.push({
         titulo: nombreVal,
         max: limiteVal,
         tareas: []
@@ -70,9 +77,11 @@ botonC.onclick = function() {
     nombre.value = "";
     limite.value = "";
 
-    if (columnasConfiguradas.length === maxColum) {
+    if (columnasConfig.length === maxColum) {
         divColumnaCampos.classList.add('oculto'); 
-        botonB.disabled = false; 
+        botonB.classList.remove('oculto'); 
+    } else {
+        alert(`Columna ${columnasConfig.length} de ${maxColum} configurada. Haz la siguiente`);
     }
 }
 
@@ -82,20 +91,65 @@ function crearTablero() {
     tabla.innerHTML = "";
     columnasConfig.forEach(function(columna, indiColumna) {
         const divColumna = document.createElement('div');
-        divColumna.className = 'columnaKanban';
-    });
+        divColumna.className = 'columna-kanban';
+        divColumna.setAttribute('draggable', 'false');
+    
     const tituloColumna = document.createElement('h3');
-    tituloColumna.textContent = columna.titulo;
+    tituloColumna.textContent = columna.titulo + ' (' + columna.tareas.length + '/' + columna.max + ')';
     divColumna.appendChild(tituloColumna);
 
     const listaTareas = document.createElement('ul');
+
     columna.tareas.forEach(function(tarea, indiTarea) {
         const itemTarea = document.createElement('li');
         itemTarea.textContent = tarea;
+        itemTarea.className = 'tarea';
+        itemTarea.draggable = true;
+
+        /*Drag Drop*/
+        
+        itemTarea.ondragstart = function(event) {
+            event.dataTransfer.setData('indiColumnaOrigen', indiColumna);
+            event.dataTransfer.setData('indiTarea', indiTarea);
+        };
+
+        /*Doble click eliminar*/
+
+        itemTarea.ondblclick = function(){
+            if(confirm("¿Quieres eliminar esta tarea?")){
+                eliminarTarea(indiColumna, indiTarea);
+            }
+        };
+
         listaTareas.appendChild(itemTarea);
     });
+
+    /*Soltar Tarea*/
+
+    listaTareas.ondragover = function(event) {
+        event.preventDefault();
+    }
+
+    listaTareas.ondrop = function(event) {
+        event.preventDefault();
+        const indiColumnaOrigen = event.dataTransfer.getData('indiColumnaOrigen');
+        const indiTarea = event.dataTransfer.getData('indiTarea');
+        soltarTarea(parseInt(indiColumnaOrigen), parseInt(indiTarea), indiColumna);
+    }
+
     divColumna.appendChild(listaTareas);
+
+    /*Añadir Tarea*/
+
+    const botonAñadir = document.createElement('button');
+    botonAñadir.textContent = 'Añadir Tarea';
+    botonAñadir.onclick = function() {
+        agregarTarea(indiColumna);
+    };
+    divColumna.appendChild(botonAñadir);
+
     tabla.appendChild(divColumna);
+    });
 }
 
 /*Reiniciar Tablero*/
@@ -111,27 +165,40 @@ limpiar.onclick = function() {
 
 function agregarTarea(indiColumna){
     const texto = inputTareaTxt.value.trim();
-    if(texto === "") return alert("La tarea no puede estar vacía");
+    if(texto === "") {
+        alert("La tarea no puede estar vacía");
+        return;
+    }
     if(columnasConfig[indiColumna].tareas.length >= columnasConfig[indiColumna].max){
-        return alert("Has introducido un límite de tareas máximo en esta columna");
+        alert("Has introducido un límite de tareas máximo en esta columna");
+        return;
     }
     columnasConfig[indiColumna].tareas.push(texto);
     guardarActualizar();
     inputTareaTxt.value = "";
     }
-    function elimarTarea(indiColumna, indiTarea){
+
+    function eliminarTarea(indiColumna, indiTarea){
         columnasConfig[indiColumna].tareas.splice(indiTarea, 1);
         guardarActualizar();
     }
+
     function soltarTarea(indiColumnaOrigen, indiTarea, indiColumnaDestino){
-        const tarea = columnasConfig[indiColumnaOrigen].tareas[indiTarea];
         if(columnasConfig[indiColumnaDestino].tareas.length >= columnasConfig[indiColumnaDestino].max){
-            return alert("La columna a la que quieres moverla está llena");
+            alert("La columna a la que quieres moverla está llena");
+            return;
         }
 
     const tareaMovida = columnasConfig[indiColumnaOrigen].tareas.splice(indiTarea, 1)[0];
     columnasConfig[indiColumnaDestino].tareas.push(tareaMovida);
     guardarActualizar();
+}
+
+/*Guardar y actualizar tablero*/
+
+function guardarActualizar(){
+    localStorage.setItem('guardadoKanban', JSON.stringify(columnasConfig));
+    crearTablero();
 }
 
 
